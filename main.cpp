@@ -14,8 +14,9 @@ int main() {
 
 	error = list.push_back(*punkt);
 	error = list.push_back(punkt2);
-	error = list.push_back(punkt3);
-	const int j = 1;
+	//error = list.push_back(punkt3);
+	const int j = 2;
+	List druga = list * 3;
 	/*while (j <= 2) 
 	{
 		Point* p = new Point(14, 14, 14);

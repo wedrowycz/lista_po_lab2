@@ -118,14 +118,17 @@ void List::multiply(const size_t idx)
 	}
 	else
 	{
-		for (int i = 0; i < idx; i++) {
+		int startsize = this->size;
+		
+		for (int i = 0; i < idx-1; i++) {
 			Node* tmp = first;
+			int tmpcnt = 0;
 			do {
 				Point *pkt = new Point(tmp->point);
 				this->push_back(*pkt);
-				size++;
+				tmpcnt++;
 				tmp = tmp->next;
-			} while (tmp != NULL);
+			} while (tmp != NULL && tmpcnt < startsize);
 		}
 	}
 
@@ -285,6 +288,13 @@ List List::operator*(const List& list)
 	List copy(list);
 	//multiply(idx???, punkt???);
 	return *this;
+}
+
+List List::operator*(const int cnt)
+{
+	List copylist(*this);
+	copylist.multiply(cnt);
+	return copylist;
 }
 
 List List::operator[](Point& punkt)

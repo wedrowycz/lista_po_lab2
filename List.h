@@ -40,6 +40,7 @@ public:
 	List& operator=(const List&);
 	List operator--(int);
 	List operator*(const List&);
+	List operator*(const int);
 	List operator[](Point&);
 	List operator++(int);
 	List operator<<(const List& list);
