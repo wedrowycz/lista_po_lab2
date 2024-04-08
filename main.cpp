@@ -10,10 +10,13 @@ int main() {
 
 	Point punkt2 = Point(17,17,17);
 
+	Point punkt3 = Point(21, 21, 21);
+
 	error = list.push_back(*punkt);
 	error = list.push_back(punkt2);
+	error = list.push_back(punkt3);
 	const int j = 1;
-	while (j <= 2) 
+	/*while (j <= 2) 
 	{
 		Point* p = new Point(14, 14, 14);
 		for (int i = 1; i <= 1000; i++) {
@@ -23,6 +26,6 @@ int main() {
 		{
 			list.pop_back();
 		}
-	}
+	}*/
 
 }

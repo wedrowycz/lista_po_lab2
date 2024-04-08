@@ -155,7 +155,14 @@ List::List(const List & list) : size(list.size), first(nullptr)
 
 List::~List()
 {
-	
+	Node* tmp = this->first;
+	while (tmp != NULL)
+	{
+		this->first = tmp->next;
+		delete(tmp);
+		tmp = this->first;
+	}
+
 }
 
 
@@ -201,7 +208,7 @@ size_t List::getSize()
 List::Error List::push_back(const Point& punkt)
 {
 	List::Error error = List::Error::SUCCESS;
-	push(punkt, size == 0?0:size - 1);
+	push(punkt, size == 0?0:size );
 
 	return error;
 }
