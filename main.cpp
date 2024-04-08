@@ -21,6 +21,14 @@ int main() {
 	cout << list<<endl;
 	cout << druga << endl;
 
+	vector<Point> wektor = vector<Point>();
+	wektor.push_back(punkt3);
+	wektor.push_back(punkt2);
+	wektor.push_back(*punkt);
+
+	List trzecia = List(wektor);
+	cout <<" trzecia " << trzecia << endl;
+
 	/*while (j <= 2) 
 	{
 		Point* p = new Point(14, 14, 14);

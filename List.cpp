@@ -1,4 +1,5 @@
 #include "List.h"
+#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -15,6 +16,11 @@ List::Node * List::find(const size_t idx)
 	return node;
 }
 
+/// <summary>
+/// Wstawienie nowego punktu wmiejsce idx
+/// </summary>
+/// <param name="point"></param>
+/// <param name="idx"></param>
 void List::push(const Point & point, const size_t idx)
 {
 	if (idx == 0)
@@ -35,7 +41,7 @@ void List::push(const Point & point, const size_t idx)
 
 void List::push(const List & list, const size_t idx)
 {
-	List copy(list);
+	List copy(list);//konstruktor kopiuj¹cy
 	Node * it = copy.first;
 	if (idx == 0)
 	{
@@ -70,6 +76,10 @@ void List::push(const List & list, const size_t idx)
 	size += copy.size;
 }
 
+/// <summary>
+/// usuwanie idx elementu
+/// </summary>
+/// <param name="idx">numer elementu do usuniêcia, 0-based</param>
 void List::pop(const size_t idx)
 {
 	if (idx == 0)
@@ -108,6 +118,11 @@ void List::multiply(const size_t idx, const Point& punkt) {
 	}
 }
 
+/// <summary>
+/// multiply operator - lista jest kopiowana idx-1 razy - ¿eby byy³o arytmetycznie
+/// wynikowy rozmiar to rozmiar startowy + idx-1 razy rozmiar startowy - ³¹cznie rozmiar ma rozmiar startowy * idx
+/// </summary>
+/// <param name="idx">multiplier-mno¿nik</param>
 void List::multiply(const size_t idx)
 {
 	if (idx == 0) {
@@ -167,8 +182,13 @@ List::List(const List & list) : size(list.size), first(nullptr)
 /// Custom-init constructor
 /// </summary>
 /// <param name=""></param>
-List::List(const vector<Point>&)
+List::List(const vector<Point>& inp): size(0), first(nullptr)
 {
+	for (int i = 0; i < inp.size(); i++)
+	{
+		push_back(inp[i]);
+	}
+	
 }
 
 /// <summary>
@@ -324,8 +344,8 @@ List List::operator*(const List& list)
 }
 
 /// <summary>
-/// multiply operator - lista jest kopiowana cnt-razy
-/// wynikowy rozmiar to rozmiar startowy + cnt-razy rozmiar startowy
+/// multiply operator - lista jest kopiowana cnt-1 razy - ¿eby byy³o arytmetycznie
+/// wynikowy rozmiar to rozmiar startowy + cnt-1 razy rozmiar startowy
 /// </summary>
 /// <param name="cnt"></param>
 /// <returns></returns>
@@ -349,11 +369,18 @@ List List::operator++(int)
 	return copy;
 }
 
+//operator przesuniêcia to nie ten
 //List List::operator<<(const List& list)
 //{
 //	return list;
 //}
 
+/// <summary>
+/// operator wypisania
+/// </summary>
+/// <param name="os"></param>
+/// <param name="li"></param>
+/// <returns></returns>
 ostream& operator<<(ostream& os, const List& li)
 {
 	os <<"size:"<< li.size << " first : " << li.first->point.x << ":" << li.first->point.y << ":" << li.first->point.y;
