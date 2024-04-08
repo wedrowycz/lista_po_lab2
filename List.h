@@ -24,6 +24,7 @@ class List
 public:
 	List();
 	List(const List&);
+	List(const vector<Point>&);
 	~List();
 	enum Error
 	{

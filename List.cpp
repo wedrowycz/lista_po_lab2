@@ -135,10 +135,16 @@ void List::multiply(const size_t idx)
 
 }
 
-
+/// <summary>
+/// default constructor
+/// </summary>
 List::List() : size(0), first(nullptr){	
 }
 
+/// <summary>
+/// copy constructor
+/// </summary>
+/// <param name="list"></param>
 List::List(const List & list) : size(list.size), first(nullptr)
 {
 	Node * it = list.first;
@@ -157,6 +163,17 @@ List::List(const List & list) : size(list.size), first(nullptr)
 	}
 }
 
+/// <summary>
+/// Custom-init constructor
+/// </summary>
+/// <param name=""></param>
+List::List(const vector<Point>&)
+{
+}
+
+/// <summary>
+/// destructor
+/// </summary>
 List::~List()
 {
 	Node* tmp = this->first;
@@ -169,7 +186,10 @@ List::~List()
 
 }
 
-
+/// <summary>
+/// pops-removes first element
+/// </summary>
+/// <returns>result code</returns>
 List::Error List::pop_front()
 {
 	List::Error error = List::Error::SUCCESS;
@@ -186,6 +206,10 @@ List::Error List::pop_front()
 	return error;
 }
 
+/// <summary>
+/// removes item from tail
+/// </summary>
+/// <returns></returns>
 List::Error List::pop_back()
 {
 	List::Error error = List::Error::SUCCESS;
@@ -203,12 +227,20 @@ List::Error List::pop_back()
 }
 
 
-
+/// <summary>
+/// size getter
+/// </summary>
+/// <returns>int, number of elements</returns>
 size_t List::getSize()
 {
 	return size;
 }
 
+/// <summary>
+/// inserts punkt item to the end
+/// </summary>
+/// <param name="punkt"></param>
+/// <returns></returns>
 List::Error List::push_back(const Point& punkt)
 {
 	List::Error error = List::Error::SUCCESS;
@@ -291,6 +323,12 @@ List List::operator*(const List& list)
 	return *this;
 }
 
+/// <summary>
+/// multiply operator - lista jest kopiowana cnt-razy
+/// wynikowy rozmiar to rozmiar startowy + cnt-razy rozmiar startowy
+/// </summary>
+/// <param name="cnt"></param>
+/// <returns></returns>
 List List::operator*(const int cnt)
 {
 	List copylist(*this);
