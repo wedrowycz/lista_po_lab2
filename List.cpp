@@ -196,6 +196,7 @@ List::List(const vector<Point>& inp): size(0), first(nullptr)
 /// </summary>
 List::~List()
 {
+	//cout << "destruktor " << this->size << "elementow " << endl;
 	Node* tmp = this->first;
 	while (tmp != NULL)
 	{
@@ -383,6 +384,11 @@ List List::operator++(int)
 /// <returns></returns>
 ostream& operator<<(ostream& os, const List& li)
 {
-	os <<"size:"<< li.size << " first : " << li.first->point.x << ":" << li.first->point.y << ":" << li.first->point.y;
+	List::Node* it = li.first;
+	os << "size:" << li.size;
+	while (it){
+		os << " item : " << it->point.x << ":" << it->point.y << ":" << it->point.z;
+		it = it->next;
+	}	
 	return os;
 }
