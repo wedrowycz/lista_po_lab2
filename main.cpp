@@ -17,6 +17,10 @@ int main() {
 	//error = list.push_back(punkt3);
 	const int j = 2;
 	List druga = list * 3;
+
+	cout << list<<endl;
+	cout << druga << endl;
+
 	/*while (j <= 2) 
 	{
 		Point* p = new Point(14, 14, 14);

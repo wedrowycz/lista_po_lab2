@@ -1,5 +1,6 @@
 #include "List.h"
-
+#include <iostream>
+using namespace std;
 
 
 List::Node * List::find(const size_t idx)
@@ -310,8 +311,13 @@ List List::operator++(int)
 	return copy;
 }
 
-List List::operator<<(const List& list)
-{
-	return list;
-}
+//List List::operator<<(const List& list)
+//{
+//	return list;
+//}
 
+ostream& operator<<(ostream& os, const List& li)
+{
+	os <<"size:"<< li.size << " first : " << li.first->point.x << ":" << li.first->point.y << ":" << li.first->point.y;
+	return os;
+}

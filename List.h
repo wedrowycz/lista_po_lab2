@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include "Point.h"
+#include <iostream>
+using namespace std;
 class List
 {
 	size_t size;
@@ -43,8 +45,8 @@ public:
 	List operator*(const int);
 	List operator[](Point&);
 	List operator++(int);
-	List operator<<(const List& list);
-	
+	//List operator<<(const List& list);
+	friend ostream& operator<<(ostream& os, const List& li);
 	//Proszê pamiêtaæ, ¿e to nie jest pe³na implementacja, nale¿y kod uzupe³niæ zgodnie z instrukcj¹
 };
 
